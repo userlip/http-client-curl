@@ -9,7 +9,12 @@
 
   "minimum-stability": "dev",
   "prefer-stable": true,
-
+  "repositories": [
+    {
+      "url": "git@github.com:aburnet/core.git",
+      "type": "vcs"
+    }
+  ],
   "authors": [
     {
       "name": "Soufiane GHZAL",
@@ -31,7 +36,7 @@
 
   "require": {
     "php": ">=5.5",
-    "serps/core": "~0.2.0|~0.3.0"
+    "serps/core": "dev-composertest"
   },
 
   "scripts": {
