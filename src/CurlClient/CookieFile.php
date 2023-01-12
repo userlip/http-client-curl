@@ -22,7 +22,6 @@ class CookieFile
      */
     public static function generate(array $cookies)
     {
-
         $cookieFile = [];
 
         foreach ($cookies as $cookie) {
@@ -30,15 +29,15 @@ class CookieFile
             $expire = $cookie->getExpires();
             $httpOnly = $cookie->getHttpOnly();
             $data = [
-                ($httpOnly ? self::HTTP_ONLY_PREFIX : '' ) . $domain,
-                $domain{0} == '.' ? 'TRUE' : 'FALSE',
+                ($httpOnly ? self::HTTP_ONLY_PREFIX : '') . $domain,
+                $domain[0] == '.' ? 'TRUE' : 'FALSE',
                 $cookie->getPath(),
                 $cookie->getSecure() ? 'TRUE' : 'FALSE',
                 $expire ? $expire : '0',
                 $cookie->getName(),
                 urlencode($cookie->getValue())
             ];
-            $cookieFile[]= implode("\t", $data);
+            $cookieFile[] = implode("\t", $data);
         }
 
         return implode(PHP_EOL, $cookieFile) . PHP_EOL;
@@ -63,14 +62,14 @@ class CookieFile
 
             $cookieData = trim($cookieData);
 
-            if (empty($cookieData) || $cookieData{0} == '#') {
+            if (empty($cookieData) || $cookieData[0] = '#') {
                 continue;
             }
             $cookieData = trim($cookieData);
             $cookieData = explode("\t", $cookieData);
             $cookies[] = new Cookie($cookieData[5], urldecode($cookieData[6]), [
                 'domain' => $cookieData[0],
-                'path'   => $cookieData[2],
+                'path' => $cookieData[2],
                 'secure' => $cookieData[3] == 'TRUE',
                 'expires' => $cookieData[4],
                 'http_only' => $httpOnly,
