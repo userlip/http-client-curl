@@ -108,7 +108,7 @@ class CurlClient implements HttpClientInterface
             $initialUrl = UrlArchive::fromString((string)$request->getUri());
             $this->client->close();
 
-            print_r(base64_encoe($rawResponse));
+            print_r(base64_encode($rawResponse));
             print_r(PHO_EOL);
 
             if ($cookieJar) {
